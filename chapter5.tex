@@ -1,0 +1,57 @@
+\chapter{Classification: Alternative} 
+
+\section{Underfitting and Overfitting}
+Re-substitution Errors, $e$: error on training
+\marginnote{I do not focus on Support Vector Machines and Artificial Neural Network} \\
+Generalization Errors, $e^{'}$: error on testing \\
+\\
+Optimistic approach to estimate $e^{'}$:
+$$e^{'}=e$$
+Pessimistic approach to estimate $e^{'}$:
+$$e^{'}=e + \frac{\# leaf \times 0.5}{Total\ \# \ Instances}$$
+\textbf{Occam's Razor} Given two models of similar generalization errors, one should prefer the simpler model over the more complex model.
+
+\section{k-Nearest Neighbour}
+Instance based classifier: Use training records directly to predict the class label of unseen cases \\ \\
+K-nearest neighbors of a record $x$ are data points that have the $k$ smallest distance to $x$. \\
+
+\section{Na$\ddot{i}$ve Bayes Classifiers}
+
+Bayes Theorem:
+$$P(C\mid A) = \frac{P(A\mid C)P(C)}{P(A)}$$
+\\
+Na$\ddot{i}$ve Bayes Classifiers: Compute the posterior probability for all values of C using the Bayes theorem
+$$P(C\mid A_1 A_2 \ldots A_n) = \frac{P(A_1 A_2 \ldots A_n\mid C)P(C)}{P(A_1 A_2 \ldots A_n)}$$
+Assume independence among attributes $A_i$
+$$P(C\mid A_1 A_2 \ldots A_n) = \frac{P(A_1\mid C_j)P(A_2\mid C_j)\ldots P(A_n\mid C_n) P(C)}{P(A_1 A_2 \ldots A_n)}$$
+For discrete attribute:
+$$P(A_i\mid C_j)=\frac{\mid A_{ik} \mid}{N_c}$$
+For continuous attribute, can use probability density estimation:
+$$P(A_i\mid C_j)=\frac{1}{\sqrt{2\pi \sigma_j^{2}}}\exp^{-\frac{A_i-\mu_j^{2}}{2\sigma_j^{2}}}$$
+\section{Support Vector Machines}
+Find a linear hyperplane (decision boundary) that will separate the data
+
+$$f(\vec{x})=
+\begin{cases} 
+    1 & if\ \vec{w}\bullet \vec{x}+b \ge 1 \\
+    0 & if\ \vec{w}\bullet \vec{x}+b \le -1 
+\end{cases}
+$$
+
+\section{Ensemble Classification}
+Predict class label of previously unseen records by aggregating predictions made by multiple classifiers \\ \\
+Assumption: Individual classifiers could be lousy, but the aggregate can usually classify correctly.
+
+\subsection{Bagging}
+Simplified steps: 
+\begin{enumerate}
+\item Sampling with replacement to get $k$ set of data
+\item Train multiple $k$ models on $k$ different samples
+\item For each test example, predict by using simple majority voting
+\end{enumerate}
+
+
+\subsection{Boosting}
+An iterative procedure to adaptively change distribution of training data by focusing more on previously misclassified records. \\ \\
+Records that are wrongly classified will have their weights increased. Records that are correctly classified will have their weights decreased
+

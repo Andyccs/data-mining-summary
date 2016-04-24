@@ -1,0 +1,93 @@
+\chapter{Cluster Analysis: Alternative}
+
+\section{DBSCAN}
+Two core points within \emph{Radius} are put into the same cluster
+\begin{description}
+\item[Core point] has more than \emph{MinPoint} within \emph{Radius}
+\item[Border point] has fewer than \emph{MinPoint} within \emph{Radius}, but is in the neighborhood of a core point.
+\item[Noise point] other points
+\end{description}
+
+\section{CURE}
+Hierarchical Approach. Representative points are found by selecting constant number of points from a cluster and then "shrinking" them toward the center of the cluster. 
+
+\section{Graph-Based Clustering}
+Builds a graph using proximity matrix, then breaks the graph using sparsification. \emph{Sparsification} keeps the connections to the most similar neighbors while breaking the connections to less similar points. Clusters are connected components in the graph.
+
+\subsection{Chameleon}
+Use a dynamic model to measure the similarity between clusters
+
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Build a k-nearest neighbor graph\\
+    2: & partition the graph using a multilevel graph partitioning algorithm\\
+    3: & \textbf{repeat} merge the clusters that best preserve the cluster self-similarity with respect to relative inter-connectivity and relative closeness\\
+    4: & \textbf{until} no more cluster can be merged \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Shared Near Neighbor Approach}
+\begin{description}
+\item[SNN Graph] The weight of an edge is the number of shared neighbours between vertices
+\end{description}
+Computing shared nearest neighbor similarity:
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Find the k-nearest neighbors of all points \\
+    2: & \textbf{if} two points, $x$ and $y$ are not among the k-nearest neighbors of eat other \textbf{then} \\
+    3: & \ \ $similarity(x, y) = 0$ \\
+    4: & \textbf{else} \\
+    5: & \ \ $similarity(x, y) = $ number of shared neighbors\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Jarvis-Patrick Clustering}
+
+\begin{description}
+\item A threshold is used to sparsify SNN similarity matrix
+\item A pair of points is put in the same cluster if:
+    \begin{enumerate}
+        \item share more than $T$ neighbours
+        \item in each others $k$ nearest neighbour list
+    \end{enumerate}
+\end{description}
+
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Compute the SNN similarity graph \\
+    2: & Sparsify the SNN similarity graph by applying a similarity threshold \\
+    3: & Find the connected components of the sparsified SNN similarity graph \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Cluster Validity}
+
+\begin{description}
+\item[External Index] measure the extent to which cluster labels match externally supplied class labels (Entrophy)
+\item[Internal Index] measure the goodness of clustering structure without respect to external information (SSE)
+\item[Relative Index] compare two different clustering or clusters
+\end{description}
+
+\subsection{Measuring Cluster Validity via Correlation}
+Compute the correlation between proximity matrix and incidence matrix. High correlation indicates that points that belong to the same cluster are close to each other.
+
+\subsection{Internal Measures: Cohesion and Separation}
+Cohesion, within cluster SSE:
+$$WSS=\sum_{i} \sum_{x \in C_i} (x-m_i)^{2}$$
+Separation, between cluster SSE:
+$$BSS=\sum_{i} \mid C_i \mid (m-m_{i})^{2}$$
+\begin{center}where $\mid C_i \mid$ is the size of cluster $i$\end{center}
+\begin{center}and $m$ is true mean of all point\end{center}
+\subsection{Internal Measures: Silhouette Coefficient}
+$$s=1-\frac{a}{b}$$
+$i$ = individual point
+$a$ = average distance of $i$ to the points in its cluster\\
+$b$ = min (average distance of $i$ to points in another cluster)\\
+Closer to 1 is better

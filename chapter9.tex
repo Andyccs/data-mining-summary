@@ -1,0 +1,27 @@
+\chapter{Anomaly Detection}
+
+\section{Type of Anomaly}
+\begin{enumerate}
+\item Point Anomalies (Our Focus)
+\item Contextual Anomalies
+\item Collective Anomalies
+\end{enumerate}
+
+\section{Anomaly Detection Techniques}
+\noindent General steps
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Build profile of normal behavior \\
+    2: & Use the normal profile to detect anomalies \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{description}
+\item[Graphical Approaches] Boxplot, Scatter plot, Spin plot
+\item[Statistical Approaches] points are determined to be outliers depending on their relationship with this model
+\item[Nearest Neighbor Based Approaches] Distance based methods or density based methods
+\item[Classification Based Approaches] Supervised learning techniques
+\end{description}
+\textit{Evaluation of Anomaly Detection: Use F-measure and ROC curve}

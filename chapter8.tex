@@ -1,0 +1,60 @@
+\chapter{Association Rule Mining}
+
+\begin{description}
+\item[Itemset] A collection of one or more items
+\item[Frequent itemset] An itemset whose support is greater than or equal to a \emph{minsup} threshold
+\end{description}
+
+$$let\ {X \Rightarrow Y}$$
+\begin{align*}
+Support\ Count, \sigma &=\# Trans(X \cup Y) \\
+Support, s &= \frac{\# Trans(X \cup Y)}{Total\ \#\ Trans} \\
+Confidence=P(Y|X)&=\frac{\# Trans(X \cup Y)}{\# Trans\ contain\ X}
+\end{align*}
+
+\noindent Goal of Association Rule Mining:
+
+$$support \ge min\_sup$$
+$$confident \ge min\_conf$$
+
+\section{Frequent Itemset Generation}
+
+Apriori Principle: If an itemset is frequent, then all of its subsets must also be frequent. This principle reduce the number of frequent itemset candidates
+$$\forall X, Y: X \subseteq Y \Rightarrow s(X) \ge s(Y)$$
+Store each candidate in a hash tree structure to count the support efficiently \\
+
+\begin{description}
+\item[Maximal Frequent itemset] none of its immediate supersets is frequent
+\item [Closed itemset] none of its immediate supersets has the same support as the itemset
+\end{description}
+
+\subsection{Alternative: FP-Growth Algorithm}
+Construct FP-tree from a transactional DB:
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Scan DB once, find frequent 1-itemset\\
+    2: & Order frequent items in frequency descending order (L-order)\\
+    3: & Process DB based on L-order\\
+\hline
+\end{tabular}
+\end{table}
+
+\noindent Mining frequent patterns using FP-tree:
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Construct conditional pattern base for each item in header table\\
+    2: & Construct conditional FP-tree from each conditional pattern-base\\
+    3: & Recursively mine conditional FP-trees and grow frequent patterns obtained so far\\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Rule Generation}
+Confidence of rules generated from the same itemset has an anti-monotone property:
+$$c(ABC \rightarrow D) \ge c(AB \rightarrow CD) \ge c(A \rightarrow BCD)$$
+
+
+
+

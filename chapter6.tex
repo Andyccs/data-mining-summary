@@ -1,0 +1,71 @@
+\chapter{Cluster Analysis}
+
+Finding groups of objects such that the objects in a group will be similar (or related) to one another and different from (or
+unrelated to) the objects in other groups
+
+\section{Type of Clustering}
+
+\begin{description}
+\item[Partitional Clustering] A division data objects into non-overlapping subsets (clusters) such that each data object is in exactly one subset
+\item[Hierarchical clustering] A set of nested clusters organized as a hierarchical tree
+\end{description}
+
+\section{Type of Clusters}
+
+\begin{description}
+\item[Well-Separated Clusters] any point in a cluster is closer to every points in the cluster than to any \emph{point} not in the cluster
+\item[Center-Based Clusters] object in a cluster is closer to the center of a cluster, than to the \emph{center} of any other cluster
+\item[Contiguous Clusters] Neighbourhood relationship, \emph{each point is close to another point} in the cluster, immediate neighbour
+\item[Density-Based Clusters] A cluster is a \emph{dense region} of points, which is separated by low-density regions, from other regions of high density
+\item[Property or Conceptual] Clusters that share some common property or represent a particular concept
+\item[Described by Objective Function] Find clusters that minimise or maximise an objective function
+\end{description}
+\section{K-mean Clustering}
+
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Select $k$ points as initial centroids\\
+    2: & Repeat \\
+    3: & \ \ \ \ Form $k$ clusters by assigning all points to the closest centroid. \\
+    4: & \ \ \ \ Recompute the centroid of each cluster \\
+    5: & Until the centroids don't change \\
+\hline
+\end{tabular}
+\end{table}
+\par \noindent Evaluating k-means clusters using Sum of Squared Error (SSE):
+$$SSE = \sum_{i=1}^{K} \sum_{x \in C_i} dist^{2}(m_i, x) $$
+
+\section{Hierarchical Clustering}
+
+\subsection{Agglomerative Clustering Algorithm}
+
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Compute the proximity matrix\\
+    2: & Let each data point be a cluster \\
+    3: & Repeat \\
+    4: & \ \ \ \ Merge the two closest clusters \\
+    5: & \ \ \ \ Update the proximity matrix \\
+    5: & Until only a single cluster remains \\
+\hline
+\end{tabular}
+\end{table} \noindent
+\underline{Cluster Similarity: Group Average} \\
+$$proximity(Cluster_i,Cluster_j)=\frac{\sum proximity(p_i, p_j)}{\mid Cluster_i \mid \mid Cluster_j \mid}$$
+
+\clearpage
+\subsection{Divisive Clustering Algorithm: \\ Minimum Spanning Tree}
+\begin{table}[h!]
+\begin{tabular}{r p{12cm}}
+\hline
+    1: & Compute a minimum spanning tree for the proximity graph \\
+    2: & Repeat \\
+    3: & \ \ \ \ Create a new cluster by breaking the link corresponding \\
+       & \ \ \ \ to the largest distance \\
+    4: & Until only singleton clusters remain \\
+\hline
+\end{tabular}
+\end{table}
+\noindent Same as single link agglomerative clustering

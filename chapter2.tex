@@ -1,0 +1,77 @@
+\chapter{Data} 
+
+\begin{description}
+  \item[Data] is collection of data object and their attributes.
+  \item[Type of Attributes] Nominal, Ordinal, Interval, Ratio.
+  \item[Attribute Values Property] Distinctness, Order, Addition, Multiplication
+\end{description} 
+\par \noindent
+\marginnote{I do not focus on Types of Data Sets and Characteristics of Structured Data}One idea to determine if an interval attribute is ratio is to check if the attribute has a true or natural absolute zero point. The ratio scales are very common in physical scenario. 
+
+\section{Discrete and Continuous}
+
+\begin{description}
+  \item[Discrete Attribute] Has only a finite or countably infinite set of values
+  \item[Continuous Attribute] Has real numbers as attribute values
+\end{description}
+
+\section{Data Quality}
+
+\begin{description}
+  \item[Noise] modification of original values
+  \item[Outlier] considerably different than most of the other data objects
+\end{description}
+
+\section{Discretization and Binarization}
+
+\begin{description}
+  \item[Binarization] transform either a continuous attribute or a categorical attribute into one or more binary attributes
+  \item[Discretisation] transform a continuous attribute into a categorical attribute
+\end{description}
+
+\section{Normalization}
+
+\underline{Min-Max Normalization}
+$$(min_A, max_A) \rightarrow (new\_min_A, new\_max_A)$$
+$${v^{'}={\frac{v-min_A}{max_A-min_A}} \times (new\_max_A-new\_min_A) + new\_min_A}$$
+\\
+\underline{Z-score Normalization}
+$$v^{'}=\frac{v-\mu_A}{\sigma_A}$$
+\\
+\underline{Normalisation by Decimal Scaling}
+$$v^{'}=\frac{v}{10^{j}}$$
+where j = smallest integer such that $Max(\mid v^{'}\mid) < 1$
+
+\section{Proximity}
+
+\begin{description}
+\item[Similarity] Numerical measure of how alike two data objects are
+\item[Dissimilarity] Numerical measure of how different two data objects are
+\end{description}
+\underline{Euclidean Distance}
+$$dist=\sqrt{\sum_{k=1}^{n}{(p_k-q_k)^2}}$$
+\\
+\underline{Minkowski Distance}
+$$dist={\sum_{k=1}^{n}{(\mid p_k-q_k\mid^r)}}^{1/r}$$
+\begin{align*}
+r = 1&: Hamming\ distance / Manhattan\ distance\\
+r = 2&: Euclidean\ distance \\
+r = inf&: supremum\ /\ Chebyshev\ distance, max(x - y) \\
+\end{align*}
+\\
+\underline{Simple Matching Coefficient}
+$$SMC=\frac{M_{11} + M_{00}}{M_{00} + M_{01} + M_{10} + M_{11}}$$
+\\
+\underline{Jaccard Coefficient}
+$$J=\frac{M_{11}}{M_{01} + M_{10} + M_{11}}$$
+\\
+\underline{Cosine Similarity}
+$$cos(p,q)=\frac{p\bullet q}{\|p\|\|q\|}$$
+\underline{Tanimoto Coefficient}
+$$T(p,q)=\frac{p\bullet q}{\|p\|^{2}+\|q\|^{2}-p\bullet q}$$
+
+\section{Correlation}
+
+$$corr(p,q)=\frac{cov(p,q)}{std(p) \times std(q)}$$
+$$cov(p,q)=\frac{1}{n-1}\sum_{k=1}^{n}{(p_k-\bar{p})(q_k-\bar{q})}$$
+$$std(p)=\sqrt{\frac{1}{n-1}\sum_{k=1}^{n}{(p_k-\bar{p})^{2}}}$$

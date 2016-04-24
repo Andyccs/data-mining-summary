@@ -1,0 +1,168 @@
+\chapter{Appendix}
+
+\begin{longtable}{ | P{3cm} | P{5cm} | P{5cm} | } 
+    \hline
+    \textbf{Classifier} & \textbf{Advantages} & \textbf{Disadvantages} \\ \hline
+    Decision Tree Based & 
+        Inexpensive to construct\newline \newline
+        Extremely fast at classifying unknown records\newline \newline
+        Easy to interpret for small-sized trees\newline \newline
+        Accuracy is comparable to other classification techniques for many simple data sets \newline
+    & \\ \hline
+    k-Nearest Neighbour & 
+        Easy to implement\newline \newline
+        Incremental addition of training data trivial\newline
+    & 
+        Lazy learner, expensive classification \newline \newline
+        Sensitive to noise because it only uses local information
+    \\ \hline
+    Naive Bayes Classifier &
+        Robust to isolated noise points \newline \newline
+        Handle missing values by ignoring the instance during probability estimate calculations \newline \newline
+        Robust to irrelevant attributes \newline
+    &
+        Independence assumption may not hold for some attributes \newline \newline
+        Use other techniques such as Bayesian Belief Networks (BBN) \newline
+    \\ \hline
+    Ensemble Classifier: Bagging &
+        Decrease variance, improve stability (tolerance to noise) \newline \newline
+        Can be parallelized \newline
+    &
+        Reduces accuracy for stable classifiers because sample size reduced by 36\% \newline
+    \\ \hline
+
+\caption{Advantages and disadvantages of various classifiers}
+\label{table:1}
+\end{longtable}
+
+\begin{longtable}{ | P{3cm} | P{5cm} | P{5cm} | } 
+\hline
+    \textbf{Clustering} & \textbf{Advantages} & \textbf{Disadvantages} \\ \hline
+    K-mean Clustering & 
+    &
+        K-means has problems when clusters are of different size, density and shapes \newline \newline
+        K-means has problems when the data contains outliers
+    \\ \hline
+    Hierarchical Clustering &
+        Do not have to assume any particular number of clusters \newline \newline
+        They may correspond to meaningful taxonomies 
+    &
+        Once a decision is made to combine two clusters, it cannot be undone \newline \newline
+        No objective function is directly minimized
+    \\ \hline
+    Agglomerative Clustering using MIN or Single Link & 
+        Can handle non-elliptical shapes
+    &
+        Sensitive to noise and outliers
+    \\ \hline
+    Agglomerative Clustering using MAX or Complete Link &
+        Less susceptible to noise and outliers
+    &
+        Tends to break large clusters \newline \newline
+        Biased towards globular clusters
+    \\ \hline
+    Agglomerative Clustering using Group Average &
+        Less susceptible to noise and outliers
+    &
+        Biased towards globular clusters
+    \\ \hline
+        Agglomerative Clustering using Ward's Method &
+        Less susceptible to noise and outliers
+    &
+        Biased towards globular clusters
+    \\ \hline
+    DBSCAN &
+        Resistant to Noise \newline \newline
+        Can handle clusters of different shapes and sizes 
+    &
+        Cannot handle different densities \newline \newline
+        Cannot handle high-dimensional data
+    \\ \hline
+    CURE &
+        Shrinking representative points toward the center helps avoid problems with noise and outliers \newline \newline
+        Handle clusters of arbitrary shapes and sizes
+    &
+        Cannot handle differing densities
+    \\ \hline
+    Jarvis-Patrick Clustering &
+        Can handle different density
+    &
+        Cannot handle different shapes
+    \\ \hline
+    SNN Density Based Clustering &
+    &
+        Does not cluster all the points
+        Complexity of SNN Clustering is high
+    \\ \hline
+\caption{Advantages and disadvantages of various clustering techniques}
+\label{table:2}
+\end{longtable}
+
+\clearpage
+\begin{longtable}{ | P{3cm} | P{5cm} | P{5cm} | } 
+\hline
+    \textbf{Association Rule Mining algorithms} & \textbf{Advantages} & \textbf{Disadvantages} \\ \hline
+    Apriori Algorithm &
+    &
+        Multiple database scans are costly \newline \newline
+        Mining long patterns needs many passes of scanning and generates lots of candidates \newline \newline 
+        Bottleneck: candidate generation and test \\ \hline
+    FP-Tree &
+        Highly condensed, but complete for frequent pattern mining \newline \newline 
+        Avoid costly database scans \newline \newline
+        Develop an efficient, FP-tree-based frequent pattern mining method \newline \newline
+        Avoid candidate generation
+    & 
+        Support dependent; cannot accommodate dynamic support threshold \newline \newline
+        Cannot accommodate incremental DB update \newline \newline 
+        Mining requires recursive operations \\ \hline
+\caption{Advantages and disadvantages of various Association Rule Mining algorithms}
+\label{table:3}
+\end{longtable}
+
+\clearpage
+\begin{longtable}{ | P{3cm} | P{5cm} | P{5cm} | } 
+\hline
+    \textbf{Anomaly Detection Technique} & \textbf{Advantages} & \textbf{Disadvantages} \\ \hline
+    Graphical Approaches &
+    &
+        Time consuming \newline \newline
+        Subjective \\ \hline
+    Statistical Approaches &
+        Utilize existing statistical modeling techniques to model various type of distributions
+    &
+        With high dimensions, difficult to estimate distributions \newline \newline
+        Parametric assumptions often do not hold for real data sets \newline \newline
+        Most of the tests are for a single attribute \\ \hline
+    Nearest Neighbour Based Approaches &
+        Can be used in unsupervised or semi-supervised setting
+    &
+        If normal points do not have sufficient number of neighbors the techniques may fail \newline \newline
+        Computationally expensive \\ \hline
+    Classification Based Approaches &
+        Models that can be easily understood \newline \newline
+        High accuracy in detecting many kinds of know anomalies
+    &
+        Require both labels from both normal and anomaly class \newline \newline
+        Cannot detect unknown and emerging anomalies \\ \hline
+\caption{Advantages and disadvantages of various Anomaly Detection Techniques}
+\label{table:4}
+\end{longtable}
+
+\clearpage
+\begin{longtable}{ | p{3cm} | p{5cm} | p{5cm} | } 
+    \hline
+    \textbf{Summary Statistic} & \textbf{Advantages} & \textbf{Disadvantages} \\ \hline
+    Mean & Mathematical & Sensitive to outlier\\ \hline
+    Median & Not sensitive to outlier & Not mathematical\\ \hline
+    Mode & Not affected by outlier & Not mathematical\\ \hline
+    Inter-quartile range & Capture majority of the data very cheaply & Does not say how data is distributed within the range\\ \hline
+    Scatter plot & Show all points & If there are too many points it would be unclear\\ \hline
+    Discretisation & Helps to apply algorithms that cannot handle continuous data & Information loss\\ \hline
+    Assuming Normal Distribution & If data is truly normally distributed, it approximates well & Otherwise it makes mistakes\\ \hline
+    Standard Deviation & Mathematical & Sensitive to outlier\\ \hline
+    Histogram & Easy to inspect and analyse & Information loss\\ \hline
+    Raw Data & No information loss & Difficult to process and comprehend\\ \hline
+\caption{Advantages and disadvantages of various summary statistics}
+\label{table:5}
+\end{longtable}
