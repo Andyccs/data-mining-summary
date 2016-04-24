@@ -2,7 +2,7 @@
 
 This LaTex document is a summary of the course CZ4032 Data Analytics and Mining, offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
 
-To download this document in PDF format: [download now]()
+To download this document in PDF format: [download now](https://github.com/Andyccs/data-mining-summary/releases/download/v1.0/CZ4032DataMiningSummary.pdf)
 
 ## Development
 
